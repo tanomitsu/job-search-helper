@@ -1,14 +1,12 @@
-import { useState } from "react"
-import { Button, ChakraProvider, Heading, Text } from "@chakra-ui/react"
+import { Box, ChakraProvider } from "@chakra-ui/react"
+import { SettingsView } from "./settings"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <ChakraProvider>
-      <Heading>Hello, World!</Heading>
-      <Text>Count: ${count}</Text>
-      <Button onClick={() => setCount((prev) => prev + 1)}>Click!</Button>
+      <Box w={350} p={8}>
+        <SettingsView />
+      </Box>
     </ChakraProvider>
   )
 }
