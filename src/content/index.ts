@@ -1,3 +1,5 @@
-import { baitoru } from "./baitoru"
+import { ContentHandlerFactory } from "./Factory"
 
-baitoru()
+const factory = new ContentHandlerFactory(document)
+const handler = factory.create("")
+handler.execute()

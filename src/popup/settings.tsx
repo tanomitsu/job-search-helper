@@ -17,17 +17,12 @@ import { useCallback, useEffect, useState } from "react"
 import { UserStoredSettings } from "./types"
 import { v4 as uuidv4 } from "uuid"
 import EditMuteKeywordsModal from "./features/MuteKeyword/components/EditMuteKeywordsModal"
+import { ChromeStoredSettings } from "../types"
 
 const defaultUserSettings: UserStoredSettings = {
   isExcludePrs: false,
   isExcludeDuplicates: false,
   muteKeywords: [],
-}
-
-type ChromeStoredSettings = {
-  isExcludePrs: boolean
-  isExcludeDuplicates: boolean
-  muteKeywords: string[]
 }
 
 export const SettingsView: React.FC = () => {
