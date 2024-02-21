@@ -2,7 +2,7 @@ import { ContentHandler } from "../ContentHandler"
 
 export class BaitoruHandler extends ContentHandler {
   excludePrsSub() {
-    const adsArticles = document.querySelectorAll(
+    const adsArticles = this.document.querySelectorAll(
       "article:not(.list-jobListDetail)"
     )
 
@@ -16,8 +16,24 @@ export class BaitoruHandler extends ContentHandler {
     // do nothing
   }
 
-  excludeMuteKeywordsSub() {
-    // keywords: readonly string[]
-    // do nothing
+  excludeMuteKeywordsSub(keywords: readonly string[]) {
+    const articles = this.document.querySelectorAll("article")
+    articles.forEach((article) => {
+      const title = article.querySelector("h3")?.textContent
+      const companyName = article
+        .querySelector("div.pt02b")
+        ?.querySelector("p")?.textContent
+      if (title == null || companyName == null) {
+        // do nothing
+        return
+      }
+      if (
+        keywords.some(
+          (keyword) => title.includes(keyword) || companyName.includes(keyword)
+        )
+      ) {
+        article.parentNode?.removeChild(article)
+      }
+    })
   }
 }

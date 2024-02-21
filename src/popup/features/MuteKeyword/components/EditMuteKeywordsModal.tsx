@@ -6,6 +6,7 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
+  ModalHeader,
   ModalOverlay,
   Table,
   TableContainer,
@@ -38,11 +39,16 @@ const EditMuteKeywordsModal: React.FC<EditMuteKeywordsModalProps> = ({
     <Modal size="4xl" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
+        <ModalHeader pb={0}>ミュートワードの編集</ModalHeader>
         <ModalCloseButton />
         <ModalBody h="100%">
+          <Text size="sm">
+            ここに設定された単語を「会社名」または「応募タイトル」に含む求人が非表示になります。
+          </Text>
           <IconButton
             w={28}
             aria-label="Push End Mute Keyword"
+            colorScheme="teal"
             icon={
               <HStack>
                 <AiOutlinePlus />
